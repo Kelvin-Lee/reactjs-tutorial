@@ -5,11 +5,21 @@ import './index.css';
 class Square extends React.Component {
   render() {
     return (
-      <button className="square">
+      <button className="square" onClick={function(){
+          alert('click');
+      }}>
         {this.props.value}
       </button>
     );
   }
+  /*
+      "Forgetting () => and writing onClick={alert('click')} is a
+       common mistake, and would fire the alert every time the
+       component re-renders." - tutorial
+
+       Probably because the expression is evaluated each time it
+       renders, and it's expecting a function?
+  */
 }
 
 class Board extends React.Component {
