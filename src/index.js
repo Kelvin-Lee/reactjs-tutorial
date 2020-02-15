@@ -3,23 +3,29 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
+  constructor(props){
+    super(props);
+        /*
+            "In JavaScript classes, you need to always call super
+             when defining the constructor of a subclass. All React
+             component classes that have a constructor should start
+             it with a super(props) call." - tutorial
+        */
+    this.state = {
+      value: null
+    };
+  }
+
   render() {
     return (
-      <button className="square" onClick={function(){
-          alert('click');
-      }}>
-        {this.props.value}
+      <button
+        className="square"
+        onClick={() => this.setState({value: 'X'})}
+      >
+        {this.state.value}
       </button>
     );
   }
-  /*
-      "Forgetting () => and writing onClick={alert('click')} is a
-       common mistake, and would fire the alert every time the
-       component re-renders." - tutorial
-
-       Probably because the expression is evaluated each time it
-       renders, and it's expecting a function?
-  */
 }
 
 class Board extends React.Component {
